@@ -1,0 +1,54 @@
+<svg width="100%" viewBox="0 0 680 372" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>One set of family members with two kinds of edges</title>
+<desc>Four family members as nodes. A red dashed undirected edge marks immediate family who may not gift each other. Green directed arrows show a valid Secret Santa draw that routes around the forbidden edge and gives each person exactly one giver and one receiver.</desc>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+/* light theme (default / fallback) */
+.bg{fill:#ffffff;}
+.t{font-size:14px;fill:#1f2937;}
+.th{font-size:14px;font-weight:500;fill:#111827;}
+.ts{font-size:12px;fill:#6b7280;}
+.node circle{fill:#e5e7eb;stroke:#9ca3af;stroke-width:1.5;}
+.give{stroke:#16a34a;stroke-width:1.5;fill:none;}
+.forbid{stroke:#dc2626;stroke-width:1.5;fill:none;}
+/* dark theme — applied automatically when the viewer prefers dark */
+@media (prefers-color-scheme: dark){
+.bg{fill:#0f172a;}
+.t{fill:#e2e8f0;}
+.th{fill:#f1f5f9;}
+.ts{fill:#94a3b8;}
+.node circle{fill:#334155;stroke:#64748b;}
+.give{stroke:#22c55e;}
+.forbid{stroke:#f87171;}
+}
+</style>
+<defs>
+<marker id="give-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path class="give" d="M2 1L8 5L2 9" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<rect class="bg" x="0" y="0" width="680" height="372"/>
+<text class="th" x="340" y="44" text-anchor="middle">one node set, two kinds of edges</text>
+
+<!-- assignment arrows (green), drawn first so nodes sit on top of their tails -->
+<line class="give" x1="220" y1="144" x2="220" y2="236" marker-end="url(#give-arrow)"/>
+<line class="give" x1="460" y1="144" x2="460" y2="236" marker-end="url(#give-arrow)"/>
+<line class="give" x1="248.3" y1="251.1" x2="431.7" y2="128.9" marker-end="url(#give-arrow)"/>
+<line class="give" x1="431.7" y1="251.1" x2="248.3" y2="128.9" marker-end="url(#give-arrow)"/>
+
+<!-- forbidden immediate-family edge (red dashed, undirected) -->
+<line class="forbid" x1="254" y1="110" x2="426" y2="110" stroke-dasharray="6 4"/>
+
+<!-- nodes -->
+<g class="node"><circle cx="220" cy="110" r="30"/><text class="th" x="220" y="114" text-anchor="middle">Alice</text></g>
+<g class="node"><circle cx="460" cy="110" r="30"/><text class="th" x="460" y="114" text-anchor="middle">Bob</text></g>
+<g class="node"><circle cx="220" cy="270" r="30"/><text class="th" x="220" y="274" text-anchor="middle">Carol</text></g>
+<g class="node"><circle cx="460" cy="270" r="30"/><text class="th" x="460" y="274" text-anchor="middle">Dave</text></g>
+
+<!-- legend -->
+<line class="give" x1="220" y1="332" x2="252" y2="332" marker-end="url(#give-arrow)"/>
+<text class="ts" x="260" y="336">gives to (secret santa draw)</text>
+<line class="forbid" x1="220" y1="352" x2="252" y2="352" stroke-dasharray="6 4"/>
+<text class="ts" x="260" y="356">immediate family — forbidden</text>
+</svg>

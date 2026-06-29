@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+data/
+package-lock.json
+# The verbatim take-home prompt — keep as provided.
+PROMPT.md

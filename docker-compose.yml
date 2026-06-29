@@ -1,0 +1,14 @@
+# Runs the API with a persistent volume for the SQLite database file.
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - DB_FILE=/app/data/secret-santa.db
+    volumes:
+      - secret-santa-data:/app/data
+
+volumes:
+  secret-santa-data:
