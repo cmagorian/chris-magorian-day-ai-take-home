@@ -1,7 +1,7 @@
-<svg width="100%" viewBox="0 0 680 560" role="img" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" viewBox="0 0 680 584" role="img" xmlns="http://www.w3.org/2000/svg">
 <!-- Adaptive light/dark theme via prefers-color-scheme (see <style> below). -->
 <title>Entity-relationship diagram of the Secret Santa records</title>
-<desc>Five tables. families is the hub with one-to-many links to members, relationships, and exchange_events. exchange_events has a one-to-many link to assignments and a unique constraint on family_id plus year. The id columns from_id, to_id, giver_id and receiver_id hold member ids.</desc>
+<desc>Five tables. families is the hub with one-to-many links to members, relationships, and exchange_events. exchange_events has a one-to-many link to assignments and a unique constraint on family_id plus year. assignments has a unique constraint on exchange_id plus giver_id, so each member draws at most once per exchange. The id columns from_id, to_id, giver_id and receiver_id hold member ids.</desc>
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
 /* light theme (default / fallback) */
@@ -35,7 +35,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 </marker>
 </defs>
 
-<rect class="bg" x="0" y="0" width="680" height="560"/>
+<rect class="bg" x="0" y="0" width="680" height="584"/>
 <text class="th" x="340" y="38" text-anchor="middle">records (sqlite schema)</text>
 
 <!-- connectors (drawn first; boxes cover the joins) -->
@@ -90,13 +90,14 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 
 <!-- assignments -->
 <g class="c-amber">
-<rect x="460" y="384" width="180" height="114" rx="6"/>
+<rect x="460" y="384" width="180" height="134" rx="6"/>
 <text class="th" x="470" y="404">assignments</text>
 <line class="divider" x1="460" y1="412" x2="640" y2="412"/>
 <text class="t" x="470" y="432">id · PK</text>
 <text class="t" x="470" y="452">exchange_id · FK</text>
 <text class="t" x="470" y="472">giver_id · FK</text>
 <text class="t" x="470" y="492">receiver_id · FK</text>
+<text class="ts" x="470" y="512">unique (exchange_id, giver_id)</text>
 </g>
 
 <!-- cardinality labels -->
@@ -108,9 +109,9 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Ar
 <text class="ts" x="556" y="378">N</text>
 
 <!-- legend -->
-<g class="c-blue"><rect x="60" y="516" width="14" height="14" rx="3"/></g>
-<text class="t" x="82" y="527">reference data</text>
-<g class="c-amber"><rect x="210" y="516" width="14" height="14" rx="3"/></g>
-<text class="t" x="232" y="527">append-only log</text>
-<text class="ts" x="60" y="548">PK primary key · FK foreign key · from_id / to_id / giver_id / receiver_id → members.id</text>
+<g class="c-blue"><rect x="60" y="540" width="14" height="14" rx="3"/></g>
+<text class="t" x="82" y="551">reference data</text>
+<g class="c-amber"><rect x="210" y="540" width="14" height="14" rx="3"/></g>
+<text class="t" x="232" y="551">append-only log</text>
+<text class="ts" x="60" y="572">PK primary key · FK foreign key · from_id / to_id / giver_id / receiver_id → members.id</text>
 </svg>
